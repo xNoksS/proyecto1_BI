@@ -205,5 +205,31 @@ Herramienta: Claude Sonnet 5 (Anthropic), vía claude.ai.
 
 ```
 
+## Lo que no pudimos responder
+
+**1. Dirección de la causalidad entre descuento y participación.** La correlación
+negativa (r = -0.383) es consistente tanto con "el descuento causa la caída" como con
+"la caída causa el descuento" (respuesta defensiva). Con datos observacionales, sin
+variación exógena en precios, ambas explicaciones son indistinguibles.
+*Necesitaríamos:* un experimento controlado (A/B test de nivel de descuento por
+tienda o región) para aislar el efecto causal.
+
+**2. Si las campañas funcionarían en hogares de bajo gasto.** El lift medido
+(+USD 0.14) proviene exclusivamente de hogares que ya eran 28 veces más valiosos
+antes de recibir campaña — nunca se ha probado el estímulo en el segmento de bajo
+gasto. *Necesitaríamos:* un piloto con asignación aleatoria de campaña en hogares de
+bajo gasto histórico.
+
+**3. El rol del display y el mailer en tienda.** No se utilizó `causal_data.csv`
+(36M de filas, no obligatoria para los 5 análisis) por su tamaño y por estar fuera
+del alcance definido. No sabemos si la exhibición física en tienda explica parte de
+por qué ciertas categorías descontadas no logran crecer. *Necesitaríamos:* cruzar
+`causal_data.csv` contra las categorías identificadas en el Análisis 2×3.
+
+**4. Estacionalidad real del negocio.** El dataset solo provee `DAY` (1-711) y
+`WEEK_NO` (1-102), sin año ni mes calendario, por anonimización. No podemos separar
+tendencia genuina de estacionalidad (por ejemplo, si semanas de alto gasto coinciden
+con fiestas reales). *Necesitaríamos:* el mapeo de `DAY` a fecha calendario real,
+que dunnhumby no provee en este dataset.
 
 
